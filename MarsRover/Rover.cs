@@ -9,6 +9,12 @@ namespace MarsRover
 
         public Rover(int position)
         {
+           this.Position = position;
+        }
+
+        public void ReceiveMessage(Message message)
+        {
+
         }
 
         public override string ToString()

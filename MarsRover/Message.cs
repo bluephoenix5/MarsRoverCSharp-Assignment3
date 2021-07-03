@@ -12,7 +12,6 @@ namespace MarsRover
             {
                 throw new ArgumentNullException(name, "Name is required.");
             }
-            Name = name;
             this.Name = name;
         }
 
