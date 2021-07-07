@@ -9,19 +9,17 @@ namespace MarsRover
 
         public void ReceiveMessage(Message message)
         {
-            string MODE_CHANGE = Mode;
-            int MOVE = Position;
+            for (int i = 0; i < message.Commands.Length; i++)
+            {
+                this.Position = message.Commands[i].NewPosition;
+            }
         }
 
         public Rover(int position)
         {
            this.Position = position;
-        }
-
-        public Rover(string mode, int generatorWatts)
-        {
-            this.Mode = mode;
-            this.GeneratorWatts = generatorWatts;
+            this.Mode = "NORMAL";
+            this.GeneratorWatts = 110;
         }
                 
        public override string ToString()
