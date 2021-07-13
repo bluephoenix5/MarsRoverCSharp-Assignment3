@@ -6,15 +6,14 @@ namespace MarsRover
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Rover myRover = new Rover(20);
-            Console.WriteLine(myRover.ToString());
+            Console.WriteLine("Hello Mars Rover!");
 
             Rover newRover = new Rover(98382);
+            Console.WriteLine(newRover.ToString());
 
-            Command[] commands = { new Command("MOVE", 5000) };
-            Message newMessage = new Message("Test message with one command", commands);
-            
+            Command[] commands = { new Command("MODE", "LOW_POWER"), new Command("MOVE", 5000) };
+            Message newMessage = new Message("Test message with two commands", commands);
+
             Console.WriteLine(newRover.ToString());
 
             newRover.ReceiveMessage(newMessage);

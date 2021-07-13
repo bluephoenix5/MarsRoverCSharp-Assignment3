@@ -11,14 +11,14 @@ namespace MarsRover
         {
             for (int i = 0; i < message.Commands.Length; i++)
             {              
-                if (Mode == "NORMAL")
+                if (Mode == "LOW_POWER")
                 {
-                    this.Mode = message.Commands[i].NewMode;
-                    this.Position = message.Commands[i].NewPosition;
+                    this.Position = this.Position;
                 }
                 else
-                {
-                    this.Mode = this.Mode;
+                {                    
+                    this.Mode = message.Commands[i].NewMode;
+                    this.Position = message.Commands[i].NewPosition;
                 }
             }
 
