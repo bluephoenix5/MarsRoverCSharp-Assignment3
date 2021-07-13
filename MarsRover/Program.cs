@@ -15,14 +15,10 @@ namespace MarsRover
             Command[] commands = { new Command("MOVE", 5000) };
             Message newMessage = new Message("Test message with one command", commands);
             
-            Console.WriteLine(newRover.Mode);
-            
-               
+            Console.WriteLine(newRover.ToString());
 
-            //Console.WriteLine(newRover.ToString());
-
-            //newRover.ReceiveMessage(newMessage);
-            //Console.WriteLine(newRover.ToString());
+            newRover.ReceiveMessage(newMessage);
+            Console.WriteLine(newRover.ToString());
 
 
         }

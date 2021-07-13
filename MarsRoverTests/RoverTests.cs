@@ -36,20 +36,46 @@ namespace MarsRoverTests
         [TestMethod]
         public void RespondsCorrectlyToModeChangeCommand()
         {
-            newRover.ReceiveMessage(message);
-            Assert.AreEqual(newRover.Position, 5000);
+            Command[] commands =
+            {
+                new Command("MODE", "NORMAL"),
+                new Command("MOVE", 10000)
+            };
+
+            Message newMessage = new Message("Message 1", commands);
+
+            newRover.ReceiveMessage(newMessage);
+            Assert.AreEqual(newRover.Mode, "NORMAL");
         }
 
-        //[TestMethod]
-        //public void DoesNotMoveInLowPower()
-        //{
+        [TestMethod]
+        public void DoesNotMoveInLowPower()
+        {
+            Command[] commands =
+            {
+                new Command("MODE", "LOW_POWER"),
+                new Command("MOVE", 5000)
+            };
 
-        //}
+            Message newMessage = new Message("Message 2", commands);
 
-        //[TestMethod]
-        //public void PositionChangesFromMoveCommand()
-        //{
+            newRover.ReceiveMessage(newMessage);
+            Assert.AreNotEqual(newRover.Position, 5000);
+        }
 
-        //}
+        [TestMethod]
+        public void PositionChangesFromMoveCommand()
+        {
+            Command[] commands =
+            {
+                new Command("MODE", "NORMAL"),
+                new Command("MOVE", 3000)
+            };
+
+            Message newMessage = new Message("Message 3", commands);
+
+            newRover.ReceiveMessage(newMessage);
+            Assert.AreEqual(newRover.Position, 3000);
+        }
     }
 }

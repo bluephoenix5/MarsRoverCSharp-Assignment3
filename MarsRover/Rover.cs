@@ -10,9 +10,19 @@ namespace MarsRover
         public void ReceiveMessage(Message message)
         {
             for (int i = 0; i < message.Commands.Length; i++)
-            {
-                this.Position = message.Commands[i].NewPosition;
+            {              
+                if (Mode == "NORMAL")
+                {
+                    this.Mode = message.Commands[i].NewMode;
+                    this.Position = message.Commands[i].NewPosition;
+                }
+                else
+                {
+                    this.Mode = this.Mode;
+                }
             }
+
+            
         }
 
         public Rover(int position)
